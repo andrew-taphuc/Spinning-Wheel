@@ -5,7 +5,7 @@ const finalValue = document.getElementById("final-value");
 const rotationValues = [
     { minDegree: 0, maxDegree: 30, value: 'ăn dookii'},
     { minDegree: 31, maxDegree: 90, value: 'ăn kem tràng tiền'},
-    { minDegree: 91, maxDegree: 150, value: 'đi ngủ'},
+    { minDegree: 91, maxDegree: 150, value: 'mất ngủ'},
     { minDegree: 151, maxDegree: 210, value: 'đi study Date'},
     { minDegree: 211, maxDegree: 270, value: 'đi hồ Tây'},
     { minDegree: 271, maxDegree: 330, value: 'chơi bowling'},
@@ -67,7 +67,7 @@ const valueGenerator = (angleValue) => {
     for (let i of rotationValues) {
       //if the angleValue is between min and max then display it
       if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-        finalValue.innerHTML = `<p>Em được ${i.value}</p>`;
+        finalValue.innerHTML = `<p>Em Châu xinh sẽ phải ${i.value}</p>`;
         spinBtn.disabled = false;
         break;
       }
