@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 body {
     height: 100vh;
@@ -51,7 +51,7 @@ body {
     background: linear-gradient(319deg, #faa499 0%, #f7dd85 37%, #ffc55c 100%);
     text-transform: uppercase;
     color: #c66e16;
-    font-size: 1.8em;
+    font-size: 1.5em;
     letter-spacing: 0.1em;
     font-weight: 600;
 }
