@@ -1,6 +1,8 @@
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
+const angleValueDisplay = document.getElementById("angle-value");
+
 //object that store values of min and max angle for a value
 const rotationValues = [
     { minDegree: 0,     maxDegree: 15,  value: 'đi studydate'},
@@ -8,14 +10,15 @@ const rotationValues = [
     { minDegree: 46,    maxDegree: 75,  value: 'đi chơi bowling'},
     { minDegree: 76,    maxDegree: 105, value: 'đi thủy cung'},
     { minDegree: 106,   maxDegree: 135, value: 'đi amusement park'},
-    { minDegree: 136,   maxDegree: 165, value: 'ăn Hey Pelo Taco'},
-    { minDegree: 166,   maxDegree: 195, value: 'đi date ở AEON Mall'},
+    { minDegree: 136,   maxDegree: 165, value: 'đi date ở AEON Mall'},
+    { minDegree: 166,   maxDegree: 195, value: 'ăn Hey Pelo Taco'},
+
     { minDegree: 196,   maxDegree: 225, value: 'đi ăn Bingsu'},
     { minDegree: 226,   maxDegree: 255, value: 'xem phim'},
     { minDegree: 256,   maxDegree: 285, value: 'đi hồ Gươm ăn kem Tràng Tiền'},
     { minDegree: 286,   maxDegree: 315, value: 'chơi đất nặn'},
-    { minDegree: 316,   maxDegree: 345, value: 'đi lượn hồ Tây'},
-    { minDegree: 346,   maxDegree: 460,  value: 'đi studydate'},
+    { minDegree: 316,   maxDegree: 345, value: 'đi studydate'}, 
+    { minDegree: 346,   maxDegree: 460,  value: 'đi lượn hồ Tây'},
 ];
 //size of each piece
 const data = [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16];
@@ -43,7 +46,7 @@ let myChart = new Chart(wheel, {
     type: "pie",
     data: {
       //Labels(values which are to be displayed on chart)
-      labels: [ '🍿','🎳','🛌', '📚', '🚤','🏺', '🍦','🍧', '🍣', '🌮', '🎯', '🦦'],
+      labels: [ '🍿','🎳','🛌-----', '📚', '🚤','🏺', '🍦','🍧', '🍣', '🌮', '🎯', '🦦'],
 
       //Settings for dataset/pie
       datasets: [
@@ -109,6 +112,10 @@ spinBtn.addEventListener("click", () => {
     myChart.options.rotation = myChart.options.rotation + resultValue;
     //Update chart with new value;
     myChart.update();
+
+    angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
+
+
     //If rotation>360 reset it back to 0
     if (myChart.options.rotation >= 360) {
       count += 1;
