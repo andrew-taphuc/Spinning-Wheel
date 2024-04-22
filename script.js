@@ -3,40 +3,27 @@ const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
 const angleValueDisplay = document.getElementById("angle-value");
 
-//object that store values of min and max angle for a value
+//Store min max angle of a value
 const rotationValues = [
-    { minDegree: 0,     maxDegree: 15,  value: 'đi studydate'},
-    { minDegree: 16,    maxDegree: 45,  value: 'đi ngủ'},
-    { minDegree: 46,    maxDegree: 75,  value: 'đi chơi bowling'},
-    { minDegree: 76,    maxDegree: 105, value: 'đi thủy cung'},
-    { minDegree: 106,   maxDegree: 135, value: 'đi amusement park'},
-    { minDegree: 136,   maxDegree: 165, value: 'đi date ở AEON Mall'},
-    { minDegree: 166,   maxDegree: 195, value: 'ăn Hey Pelo Taco'},
-
-    { minDegree: 196,   maxDegree: 225, value: 'đi ăn Bingsu'},
-    { minDegree: 226,   maxDegree: 255, value: 'xem phim'},
-    { minDegree: 256,   maxDegree: 285, value: 'đi hồ Gươm ăn kem Tràng Tiền'},
-    { minDegree: 286,   maxDegree: 315, value: 'chơi đất nặn'},
-    { minDegree: 316,   maxDegree: 345, value: 'đi studydate'}, 
-    { minDegree: 346,   maxDegree: 460,  value: 'đi lượn hồ Tây'},
+    { minDegree: 2,     maxDegree: 30 - 2,  value: 'đi studydate'},
+    { minDegree: 31+2,    maxDegree: 55+3,  value: 'đi ngủ'},
+    { minDegree: 61+2,    maxDegree: 85+3,  value: 'đi chơi bowling'},
+    { minDegree: 91+2,    maxDegree: 115+3, value: 'đi thủy cung'},
+    { minDegree: 121+2,   maxDegree: 145+3, value: 'đi amusement park'},
+    { minDegree: 151+2,   maxDegree: 175+3, value: 'đi date ở AEON Mall'},
+    { minDegree: 181+2,   maxDegree: 210-2, value: 'ăn Hey Pelo Taco'},
+    { minDegree: 211+2,   maxDegree: 240-2, value: 'đi ăn Bingsu'},
+    { minDegree: 241+2,   maxDegree: 270-2, value: 'xem phim'},
+    { minDegree: 271+2,   maxDegree: 300-2, value: 'đi hồ Gươm ăn kem Tràng Tiền'},
+    { minDegree: 301+2,   maxDegree: 330-2, value: 'chơi đất nặn'},
+    { minDegree: 331+2,   maxDegree: 360-2, value: 'đi lượn hồ Tây'}, 
 ];
-//size of each piece
+
+//size of each piece: Không hiểu là để làm gì, chắc là gán giá trị ban đầu
 const data = [16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16];
 
-//background color for each piece
-var pieColors = [
-    "#8b35bc", 
-    "#b163da",
-    "#8b35bc", 
-    "#b163da",
-    "#8b35bc", 
-    "#b163da",
-    "#8b35bc", 
-    "#b163da",
-    "#8b35bc",
-    "#b163da",
-    "#8b35bc",  
-    "#b163da"];
+//Color of each piece
+var pieColors = ["#8b35bc", "#b163da", "#8b35bc", "#b163da","#8b35bc", "#b163da", "#8b35bc", "#b163da","#8b35bc","#b163da","#8b35bc",  "#b163da"];
 
 //Create chart
 let myChart = new Chart(wheel, {
@@ -46,7 +33,7 @@ let myChart = new Chart(wheel, {
     type: "pie",
     data: {
       //Labels(values which are to be displayed on chart)
-      labels: [ '🍿','🎳','🛌-----', '📚', '🚤','🏺', '🍦','🍧', '🍣', '🌮', '🎯', '🦦'],
+      labels: ['🎳', '🛌', '📚', '🚤', '🏺', '🍦', '🍿', '🍧', '🌮', '🍣', '🎯', '🦦'],
 
       //Settings for dataset/pie
       datasets: [
@@ -63,14 +50,12 @@ let myChart = new Chart(wheel, {
       plugins: {
         //hide tooltip and legend
         tooltip: false,
-        legend: {
-          display: false,
-        },
+        legend: { display: false,},
         //display labels inside pie chart
         datalabels: {
           color: "#ffffff",
           formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-          font: { size: 24 },
+          font: { size: 30 },
         },
       },
     },
@@ -80,16 +65,12 @@ let myChart = new Chart(wheel, {
 //display value based on the randomAngle
 const valueGenerator = (angleValue) => {
     for (let i of rotationValues) {
-      //if the angleValue is between min and max then display it
-      if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-        finalValue.innerHTML = `<p>Em chọn ${i.value} cùng Andrew</p>`;
-        spinBtn.disabled = false;
+        //if the angleValue is between min and max then display it
+        if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+            finalValue.innerHTML = `<p>Em chọn ${i.value} cùng Andrew</p>`;
+            spinBtn.disabled = false;
         break;
-      }
-    }
-  };
-
-
+}}};
 
 //Spinner count
 let count = 0;
@@ -113,7 +94,7 @@ spinBtn.addEventListener("click", () => {
     //Update chart with new value;
     myChart.update();
 
-    angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
+    //angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
 
 
     //If rotation>360 reset it back to 0
