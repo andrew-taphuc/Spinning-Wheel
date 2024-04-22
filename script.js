@@ -2,6 +2,8 @@ const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
 const finalValue = document.getElementById("final-value");
 const angleValueDisplay = document.getElementById("angle-value");
+const angleValueDisplay2 = document.getElementById("angle-value2");
+
 
 //Store min max angle of a value
 const rotationValues = [
@@ -75,7 +77,7 @@ const valueGenerator = (angleValue) => {
 //Spinner count
 let count = 0;
 //100 rotations for animation and last rotation for result
-let resultValue = 101;
+let resultValue = 50;
 //Start spinning
 spinBtn.addEventListener("click", () => {
   spinBtn.disabled = true;
@@ -94,15 +96,17 @@ spinBtn.addEventListener("click", () => {
     //Update chart with new value;
     myChart.update();
 
-    //angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
+    angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
+    angleValueDisplay2.innerHTML = `Angle: ${randomDegree}°`;
+
 
 
     //If rotation>360 reset it back to 0
     if (myChart.options.rotation >= 360) {
       count += 1;
-      resultValue -= 5;
+      resultValue -= 1;
       myChart.options.rotation = 0;
-    } else if (count > 15 && myChart.options.rotation == randomDegree) {
+    } else if (count > 5 && myChart.options.rotation == randomDegree) {
       valueGenerator(randomDegree);
       clearInterval(rotationInterval);
       count = 0;
