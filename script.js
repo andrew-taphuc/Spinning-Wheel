@@ -7,18 +7,18 @@ const angleValueDisplay2 = document.getElementById("angle-value2");
 
 //Store min max angle of a value
 const rotationValues = [
-    { minDegree: 2,     maxDegree: 30 - 2,  value: 'đi studydate'},
-    { minDegree: 31+2,    maxDegree: 55+3,  value: 'đi ngủ'},
-    { minDegree: 61+2,    maxDegree: 85+3,  value: 'đi chơi bowling'},
-    { minDegree: 91+2,    maxDegree: 115+3, value: 'đi thủy cung'},
-    { minDegree: 121+2,   maxDegree: 145+3, value: 'đi amusement park'},
-    { minDegree: 151+2,   maxDegree: 175+3, value: 'đi date ở AEON Mall'},
-    { minDegree: 181+2,   maxDegree: 210-2, value: 'ăn Hey Pelo Taco'},
-    { minDegree: 211+2,   maxDegree: 240-2, value: 'đi ăn Bingsu'},
-    { minDegree: 241+2,   maxDegree: 270-2, value: 'xem phim'},
-    { minDegree: 271+2,   maxDegree: 300-2, value: 'đi hồ Gươm ăn kem Tràng Tiền'},
-    { minDegree: 301+2,   maxDegree: 330-2, value: 'chơi đất nặn'},
-    { minDegree: 331+2,   maxDegree: 360-2, value: 'đi lượn hồ Tây'}, 
+    { minDegree: 0,     maxDegree: 30,  value: 'đi studydate'},
+    { minDegree: 31,    maxDegree: 60,  value: 'đi ngủ'},
+    { minDegree: 61,    maxDegree: 90,  value: 'đi chơi bowling'},
+    { minDegree: 91,    maxDegree: 120, value: 'đi thủy cung'},
+    { minDegree: 121,   maxDegree: 150, value: 'đi amusement park'},
+    { minDegree: 151,   maxDegree: 180, value: 'đi date ở AEON Mall'},
+    { minDegree: 181,   maxDegree: 210, value: 'ăn Hey Pelo Taco'},
+    { minDegree: 211,   maxDegree: 240, value: 'đi ăn Bingsu'},
+    { minDegree: 241,   maxDegree: 270, value: 'xem phim'},
+    { minDegree: 271,   maxDegree: 300, value: 'đi hồ Gươm ăn kem Tràng Tiền'},
+    { minDegree: 301,   maxDegree: 330, value: 'chơi đất nặn'},
+    { minDegree: 331,   maxDegree: 360, value: 'đi lượn hồ Tây'}, 
 ];
 
 //size of each piece: Không hiểu là để làm gì, chắc là gán giá trị ban đầu
@@ -77,14 +77,14 @@ const valueGenerator = (angleValue) => {
 //Spinner count
 let count = 0;
 //100 rotations for animation and last rotation for result
-let resultValue = 50;
+let resultValue = 30;
 //Start spinning
 spinBtn.addEventListener("click", () => {
   spinBtn.disabled = true;
   //Empty final value
   finalValue.innerHTML = `<p>hehehehehehe</p>`;
   //Generate random degrees to stop at
-  let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+  let randomDegree = Math.floor(Math.random() * (355 - 0 + 1));
   //Interval for rotation animation
   let rotationInterval = window.setInterval(() => { //Set rotation for piechart
     
@@ -96,8 +96,8 @@ spinBtn.addEventListener("click", () => {
     //Update chart with new value;
     myChart.update();
 
-    angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
-    angleValueDisplay2.innerHTML = `Angle: ${randomDegree}°`;
+    //angleValueDisplay.innerHTML = `Angle: ${myChart.options.rotation}°`;
+    //angleValueDisplay2.innerHTML = `Angle: ${randomDegree}°`;
 
 
 
@@ -110,7 +110,7 @@ spinBtn.addEventListener("click", () => {
       valueGenerator(randomDegree);
       clearInterval(rotationInterval);
       count = 0;
-      resultValue = 101;
+      resultValue = 30;
     }
   }, 10);
 });
